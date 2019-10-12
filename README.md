@@ -10,7 +10,7 @@ that function.
 
 ```terraform
 module "lambda-api" {
-  source      = "git::https://github.com/alexandermendes/tf-aws-lambda-api.git?ref=tags/v1.2.0"
+  source      = "git::https://github.com/alexandermendes/tf-aws-lambda-api.git?ref=tags/v1.0.0"
   http_method = "POST"
   name        = "my-function"
   dir         = "functions"
@@ -19,6 +19,9 @@ module "lambda-api" {
   handler     = "lambda_handler"
 }
 ```
+
+**Note that the source reference above is just an example, in most cases you
+should update it to the [latest tag](https://github.com/alexandermendes/tf-aws-lambda-api/tags).**
 
 For additional variables and outputs see [variables.tf](./variables.tf) and
 [outputs.tf](./outputs.tf), respectively.
