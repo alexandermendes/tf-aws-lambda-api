@@ -22,3 +22,8 @@ variable "lambda_invoke_arn" {
 variable "enable_cors" {
   description = "Enable CORS for the API Gateway resources."
 }
+
+variable "stage_name" {
+  description = "The name of the stage."
+  default     = "dev"
+}

@@ -114,11 +114,21 @@ resource "aws_api_gateway_integration_response" "options_integration_response" {
 # Depoloyment
 resource "aws_api_gateway_deployment" "deployment" {
   rest_api_id = aws_api_gateway_rest_api.api.id
+
   depends_on  = [
     "aws_api_gateway_integration.options_integration",
     "aws_api_gateway_integration.request_method_integration",
     "aws_api_gateway_integration_response.response_method_integration"
   ]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  # Ensure redeployment if the Lambda function has changed
+  # https://github.com/hashicorp/terraform/issues/6613
+  stage_name        = var.stage_name
+  stage_description = "${md5(file("${path.module}/main.tf"))}"
 }
 
 # Give API Gateway permissions to invoke the Lambda function
