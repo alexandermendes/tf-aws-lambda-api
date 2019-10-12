@@ -3,23 +3,23 @@ resource "aws_api_gateway_rest_api" "api" {
   description = var.description
 }
 
-resource "aws_api_gateway_resource" "resource" {
+resource "aws_api_gateway_resource" "proxy" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   parent_id   = aws_api_gateway_rest_api.api.root_resource_id
-  path_part   = var.path_part
+  path_part   = "{proxy+}"
 }
 
 # Requests
 resource "aws_api_gateway_method" "request_method" {
   rest_api_id   = aws_api_gateway_rest_api.api.id
-  resource_id   = aws_api_gateway_resource.resource.id
+  resource_id   = aws_api_gateway_resource.proxy.id
   http_method   = var.method
   authorization = "NONE"
 }
 
 resource "aws_api_gateway_integration" "request_method_integration" {
   rest_api_id             = aws_api_gateway_rest_api.api.id
-  resource_id             = aws_api_gateway_resource.resource.id
+  resource_id             = aws_api_gateway_resource.proxy.id
   http_method             = aws_api_gateway_method.request_method.http_method
   type                    = "AWS_PROXY"
   integration_http_method = "POST"
@@ -29,7 +29,7 @@ resource "aws_api_gateway_integration" "request_method_integration" {
 # Responses
 resource "aws_api_gateway_method_response" "response_method" {
   rest_api_id = aws_api_gateway_rest_api.api.id
-  resource_id = aws_api_gateway_resource.resource.id
+  resource_id = aws_api_gateway_resource.proxy.id
   http_method = aws_api_gateway_integration.request_method_integration.http_method
   status_code = "200"
 
@@ -40,7 +40,7 @@ resource "aws_api_gateway_method_response" "response_method" {
 
 resource "aws_api_gateway_integration_response" "response_method_integration" {
   rest_api_id = aws_api_gateway_rest_api.api.id
-  resource_id = aws_api_gateway_resource.resource.id
+  resource_id = aws_api_gateway_resource.proxy.id
   http_method = aws_api_gateway_method_response.response_method.http_method
   status_code = aws_api_gateway_method_response.response_method.status_code
 
@@ -54,7 +54,7 @@ resource "aws_api_gateway_integration_response" "response_method_integration" {
 resource "aws_api_gateway_method" "options_method" {
   count         = "${var.enable_cors ? 1 : 0}"
   rest_api_id   = "${aws_api_gateway_rest_api.api.id}"
-  resource_id   = "${aws_api_gateway_resource.resource.id}"
+  resource_id   = "${aws_api_gateway_resource.proxy.id}"
   http_method   = "OPTIONS"
   authorization = "NONE"
 }
@@ -62,7 +62,7 @@ resource "aws_api_gateway_method" "options_method" {
 resource "aws_api_gateway_method_response" "options_200" {
   count       = "${var.enable_cors ? 1 : 0}"
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
-  resource_id = "${aws_api_gateway_resource.resource.id}"
+  resource_id = "${aws_api_gateway_resource.proxy.id}"
   http_method = "${aws_api_gateway_method.options_method[0].http_method}"
   status_code = "200"
 
@@ -83,7 +83,7 @@ resource "aws_api_gateway_method_response" "options_200" {
 resource "aws_api_gateway_integration" "options_integration" {
   count       = "${var.enable_cors ? 1 : 0}"
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
-  resource_id = "${aws_api_gateway_resource.resource.id}"
+  resource_id = "${aws_api_gateway_resource.proxy.id}"
   http_method = "${aws_api_gateway_method.options_method[0].http_method}"
 
   type             = "MOCK"
@@ -95,7 +95,7 @@ resource "aws_api_gateway_integration" "options_integration" {
 resource "aws_api_gateway_integration_response" "options_integration_response" {
   count       = "${var.enable_cors ? 1 : 0}"
   rest_api_id = "${aws_api_gateway_rest_api.api.id}"
-  resource_id = "${aws_api_gateway_resource.resource.id}"
+  resource_id = "${aws_api_gateway_resource.proxy.id}"
   http_method = "${aws_api_gateway_method.options_method[0].http_method}"
   status_code = "${aws_api_gateway_method_response.options_200[0].status_code}"
 
@@ -137,9 +137,9 @@ resource "aws_lambda_permission" "allow_api_gateway" {
   statement_id  = "AllowExecutionFromApiGateway"
   action        = "lambda:InvokeFunction"
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_api_gateway_deployment.deployment.execution_arn}/*/${aws_api_gateway_method.request_method.http_method}${aws_api_gateway_resource.resource.path}"
+  source_arn    = "${aws_api_gateway_deployment.deployment.execution_arn}/*/*"
   depends_on    = [
     "aws_api_gateway_rest_api.api",
-    "aws_api_gateway_resource.resource"
+    "aws_api_gateway_resource.proxy"
   ]
 }

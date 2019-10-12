@@ -27,7 +27,3 @@ variable "stage_name" {
   description = "The name of the stage."
   default     = "dev"
 }
-
-variable "path_part" {
-  description = "The last path segment of the API resource."
-}

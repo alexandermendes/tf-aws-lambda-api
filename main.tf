@@ -20,5 +20,4 @@ module "api" {
   lambda_invoke_arn = module.lambda.invoke_arn
   lambda_name       = module.lambda.name
   enable_cors       = var.enable_cors
-  path_part         = var.path_part
 }
