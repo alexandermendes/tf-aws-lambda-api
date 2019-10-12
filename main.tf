@@ -1,5 +1,5 @@
 module "lambda" {
-  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=1.2.0"
+  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=tags/1.2.0"
   name          = var.name
   ext           = var.ext
   dir           = var.dir
