@@ -17,6 +17,9 @@ module "lambda-api" {
   ext         = "py"
   runtime     = "python3.7"
   handler     = "lambda_handler"
+
+  # Set to "{proxy+}" by default to accept requests to all endpoints
+  path_path   = "run"
 }
 ```
 
