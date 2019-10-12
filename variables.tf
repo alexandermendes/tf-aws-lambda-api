@@ -56,4 +56,5 @@ variable "http_method" {
 
 variable "enable_cors" {
   description = "Enable CORS for the API Gateway resources."
+  default     = false
 }
