@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/alexandermendes/tf-aws-lambda-api/compare/v1.2.3...v1.3.0) (2019-10-12)
+
+
+### Features
+
+* add path_part variable ([5828a13](https://github.com/alexandermendes/tf-aws-lambda-api/commit/5828a13acc08d588d8a03114c54a1a5119a6a4aa))
+* force redeployment if the API changes ([4c61576](https://github.com/alexandermendes/tf-aws-lambda-api/commit/4c61576a379168f7dafe383a2b027f0c2f4c5fe5))
+
+
+### Bug Fixes
+
+* add path_part var to api module ([57060a9](https://github.com/alexandermendes/tf-aws-lambda-api/commit/57060a9354828f59e093bbea513e6b25869134b8))
+* lambda permissions after adding new stage name var ([8c93c66](https://github.com/alexandermendes/tf-aws-lambda-api/commit/8c93c66ff9ce606e683fef07ea8f9bd67d327091))
+* lambda permissions source arn ([e67042b](https://github.com/alexandermendes/tf-aws-lambda-api/commit/e67042b0c0ca0ad42aa02a26a3d5280527a25fff))
+
 ### [1.2.3](https://github.com/alexandermendes/tf-aws-lambda-api/compare/v1.2.2...v1.2.3) (2019-10-12)
 
 ### [1.2.2](https://github.com/alexandermendes/tf-aws-lambda-api/compare/v1.2.1...v1.2.2) (2019-10-12)
