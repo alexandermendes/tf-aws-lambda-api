@@ -58,8 +58,3 @@ variable "enable_cors" {
   description = "Enable CORS for the API Gateway resources."
   default     = false
 }
-
-variable "path_part" {
-  description = "The last path segment of the API resource."
-  default     = "{proxy+}"
-}
