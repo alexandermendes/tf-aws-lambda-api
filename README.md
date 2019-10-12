@@ -10,7 +10,7 @@ that function.
 
 ```terraform
 module "lambda-api" {
-  source      = "git::https://github.com/alexandermendes/tf-aws-lambda-api.git?ref=tags/1.1.1"
+  source      = "git::https://github.com/alexandermendes/tf-aws-lambda-api.git?ref=tags/v1.1.2"
   http_method = "POST"
   name        = "my-function"
   dir         = "functions"
