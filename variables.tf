@@ -53,3 +53,7 @@ variable "memory_size" {
 variable "http_method" {
   description = "The HTTP method to invoke the Lambda function."
 }
+
+variable "enable_cors" {
+  description = "Enable CORS for the API Gateway resources."
+}

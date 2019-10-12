@@ -18,3 +18,7 @@ variable "lambda_name" {
 variable "lambda_invoke_arn" {
   description = "The Lambda invoke ARN."
 }
+
+variable "enable_cors" {
+  description = "Enable CORS for the API Gateway resources."
+}
