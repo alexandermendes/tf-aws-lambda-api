@@ -24,4 +24,4 @@ module "lambda-api" {
 should update it to the [latest tag](https://github.com/alexandermendes/tf-aws-lambda-api/tags).**
 
 For additional variables and outputs see [variables.tf](./variables.tf) and
-[outputs.tf](./outputs.tf), respectively.
+[output.tf](./output.tf), respectively.
