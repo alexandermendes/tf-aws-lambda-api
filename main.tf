@@ -13,7 +13,7 @@ module "lambda" {
 }
 
 module "api" {
-  source            = "./modules/api"
+  source            = "./api"
   name              = "${var.name}-api"
   description       = "API to invoke ${var.name}"
   method            = var.http_method
