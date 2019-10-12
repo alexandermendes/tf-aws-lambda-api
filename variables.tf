@@ -32,7 +32,7 @@ variable "environment" {
 }
 
 variable "timeout" {
-  description = "The amount of time your Lambda Function has to run in seconds."
+  description = "The amount of time your Lambda function has to run in seconds."
   default     = 3
 }
 
@@ -46,6 +46,10 @@ variable "vpc_config" {
 }
 
 variable "memory_size" {
-  description = "Amount of memory in MB your Lambda Function can use at runtime."
+  description = "Amount of memory in MB your Lambda function can use at runtime."
   default     = 128
+}
+
+variable "http_method" {
+  description = "The HTTP method to invoke the Lambda function."
 }
