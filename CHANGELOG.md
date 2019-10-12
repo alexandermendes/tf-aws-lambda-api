@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/alexandermendes/tf-aws-lambda-api/compare/v1.1.5...v1.2.0) (2019-10-12)
+
+
+### Features
+
+* add CORS support ([68e7007](https://github.com/alexandermendes/tf-aws-lambda-api/commit/68e70077da380debeba060a4190fc7dd3a8c08a1))
+
 ### [1.1.5](https://github.com/alexandermendes/tf-aws-lambda-api/compare/v1.1.4...v1.1.5) (2019-10-12)
 
 
