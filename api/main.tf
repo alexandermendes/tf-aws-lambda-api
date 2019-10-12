@@ -140,6 +140,6 @@ resource "aws_lambda_permission" "allow_api_gateway" {
   source_arn    = "${aws_api_gateway_deployment.deployment.execution_arn}/*/${aws_api_gateway_method.request_method.http_method}${aws_api_gateway_resource.resource.path}"
   depends_on    = [
     "aws_api_gateway_rest_api.api",
-    "aws_api_gateway_resource.proxy"
+    "aws_api_gateway_resource.resource"
   ]
 }
