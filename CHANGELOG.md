@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.1](https://github.com/alexandermendes/tf-aws-lambda-api/compare/v1.5.0...v1.5.1) (2019-10-13)
+
+
+### Bug Fixes
+
+* lambda role ID ([da80a31](https://github.com/alexandermendes/tf-aws-lambda-api/commit/da80a317484e0829d266113193defc746f8523dd))
+
 ## [1.5.0](https://github.com/alexandermendes/tf-aws-lambda-api/compare/v1.4.0...v1.5.0) (2019-10-13)
 
 
