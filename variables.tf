@@ -1,5 +1,10 @@
-variable "name" {
+variable "function_name" {
   description = "The name of the Lambda function."
+}
+
+variable "namespace" {
+  description = "A namespace to be prepended to resource names."
+  default     = ""
 }
 
 variable "ext" {

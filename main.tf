@@ -1,6 +1,11 @@
+locals {
+  name = replace(join("-", var.namespace, var.function_name), "/^-/", "")
+}
+
 module "lambda" {
-  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=tags/v1.3.0"
-  name          = var.name
+  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=tags/v1.4.0"
+  function_name = var.function_name
+  namespace     = var.namespace
   ext           = var.ext
   dir           = var.dir
   runtime       = var.runtime
@@ -15,8 +20,8 @@ module "lambda" {
 
 module "api" {
   source            = "./api"
-  name              = "${var.name}-api"
-  description       = "API to invoke ${var.name}"
+  name              = "${local.name}-api"
+  description       = "API to invoke ${local.name}"
   method            = var.http_method
   lambda_invoke_arn = module.lambda.invoke_arn
   lambda_name       = module.lambda.name
