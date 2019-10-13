@@ -1,5 +1,5 @@
 locals {
-  name = replace(join("-", var.namespace, var.function_name), "/^-/", "")
+  name = replace(join("-", [var.namespace, var.function_name]), "/^-/", "")
 }
 
 module "lambda" {
