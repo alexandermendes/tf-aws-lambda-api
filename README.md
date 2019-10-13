@@ -10,13 +10,13 @@ that function.
 
 ```terraform
 module "lambda-api" {
-  source      = "git::https://github.com/alexandermendes/tf-aws-lambda-api.git?ref=tags/v1.0.0"
-  http_method = "POST"
-  name        = "my-function"
-  dir         = "functions"
-  ext         = "py"
-  runtime     = "python3.7"
-  handler     = "lambda_handler"
+  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-api.git?ref=tags/v1.0.0"
+  http_method   = "POST"
+  function_name = "my-function"
+  dir           = "functions"
+  ext           = "py"
+  runtime       = "python3.7"
+  handler       = "lambda_handler"
 }
 ```
 
