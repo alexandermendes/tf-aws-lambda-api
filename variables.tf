@@ -58,3 +58,9 @@ variable "enable_cors" {
   description = "Enable CORS for the API Gateway resources."
   default     = false
 }
+
+variable "layers" {
+  description = "List of Lambda Layer Version ARNs (maximum of 5) to attach to your Lambda function."
+  default     = []
+  type        = list(string)
+}

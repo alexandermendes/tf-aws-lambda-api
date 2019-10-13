@@ -1,5 +1,5 @@
 module "lambda" {
-  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=tags/v1.2.0"
+  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=tags/v1.3.0"
   name          = var.name
   ext           = var.ext
   dir           = var.dir
@@ -10,6 +10,7 @@ module "lambda" {
   timeout       = var.timeout
   vpc_config    = var.vpc_config
   memory_size   = var.memory_size
+  layers        = var.layers
 }
 
 module "api" {
