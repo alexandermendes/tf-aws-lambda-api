@@ -3,7 +3,7 @@ locals {
 }
 
 module "lambda" {
-  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=tags/v1.4.0"
+  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=tags/v1.4.1"
   function_name = var.function_name
   namespace     = var.namespace
   ext           = var.ext
