@@ -3,7 +3,7 @@ locals {
 }
 
 module "lambda" {
-  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=tags/v1.4.4"
+  source        = "git::https://github.com/alexandermendes/tf-aws-lambda-file.git?ref=tags/v2.0.0"
   function_name = var.function_name
   namespace     = var.namespace
   ext           = var.ext
@@ -24,6 +24,6 @@ module "api" {
   description       = "API to invoke ${local.name}"
   method            = var.http_method
   lambda_invoke_arn = module.lambda.invoke_arn
-  lambda_name       = module.lambda.name
+  lambda_name       = module.lambda.function_name
   enable_cors       = var.enable_cors
 }
